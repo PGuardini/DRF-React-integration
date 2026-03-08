@@ -1,0 +1,24 @@
+{
+  "name": "drf-react-integration",
+  "version": "1.0.0",
+  "description": "It is a study case of integration: how ReactJS can consume Django Rest Framework API using a hybrid architecture.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PGuardini/DRF-React-integration.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/PGuardini/DRF-React-integration/issues"
+  },
+  "homepage": "https://github.com/PGuardini/DRF-React-integration#readme",
+  "devDependencies": {
+    "vite": "^7.3.1"
+  }
+}
