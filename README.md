@@ -56,6 +56,7 @@ export default defineConfig({
 ```json
   "scripts": {
     //(other scripts commands here...),
+    "dev": "vite",
     "build": "vite build"
   },
 ```
@@ -198,3 +199,141 @@ urlpatterns = [
 ```
 
 20. Using the django routing, we can map and add our app ease
+21. To maintain certain of react structure, with components and so on, we can create a folder called components in our assets/js/
+22. And here we gonna put our components files
+23. If you'll use only a template file to run your todo app, we can just add the vite_asset in this template, as it follows:
+
+```html
+{% load django_vite %}
+<html>
+  <head>
+    <title>Getting Started with Django and Vite</title>
+    {% vite_hmr_client %}
+  </head>
+  <body>
+    <div id='root'></div>
+    <!-- command that allow us to use our react files without transpile every time -->
+    {% vite_asset 'assets/js/index.jsx' %}
+
+  </body>
+</html>
+```
+
+24. If you wanna use a base.html file to keep our django-vite config, you must create the base.html and put this part of code there:
+
+```html
+{% load django_vite %}
+<html>
+    <head>
+        <title>Getting started with Django and Vite</title>        
+        {% vite_hmr_client %}
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+    </body>
+</html>
+
+```
+
+and in your content file:
+
+```html
+{% extends 'setup/base.html' %}
+{% load django_vite %}
+
+{% block content %}
+
+    <div id='root'></div>
+
+    {% vite_asset 'assets/js/index.jsx' %}
+{% endblock %}
+```
+
+25. Now, we'll create our first component like that:
+    assets/js/components/Article/
+    
+    and add the index.jsx
+
+26. In index.jsx:
+    
+```jsx
+const Title = ({ children }) => {
+    return <h1>{children}</h1>;
+}
+
+function Article() {
+    return (
+        <main>
+            <Title>Hello, React!</Title>
+        </main>);
+}
+
+export default Article;
+```
+
+27. And, in our index.jsx, in js/ folder:
+
+```jsx
+
+import React, { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import Article from 'components/Article';
+
+const renderApp = () => {
+    
+    const rootElement = document.getElementById('root');
+    if (rootElement){
+        const root = createRoot(rootElement);
+        root.render(
+            <StrictMode>
+                <Article />
+            </StrictMode>
+        );
+    } else {
+        console.error('Elemento com id=root não encontrado')
+    }
+}
+
+if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', renderApp)
+} else {
+    renderApp()
+}
+
+```
+
+28. To run our code, we need to run the follow commands:
+
+```bash
+    uv run manage.py runserver
+```
+
+```bash
+
+    npm run dev
+
+```
+
+29. Maybe, this error can appear "Uncaught Error: @vitejs/plugin-react can't detect preamble. Something is wrong."
+
+30. To fix that, we must add the follow lines in our index.html (or in our base.html):
+
+```html
+    {% load django_vite %}
+<html>
+    <head>
+        <title>...</title>
+        <script type="module">
+            import RefreshRuntime from 'http://localhost:5173/static/@react-refresh'
+            RefreshRuntime.injectIntoGlobalHook(window)
+            window.$RefreshReg$ = () => {}
+            window.$RefreshSig$ = () => (type) => type
+            window.__vite_plugin_react_preamble_installed__ = true
+        </script>
+        {% vite_hmr_client %}
+    </head>
+    <body>
+        ...
+```
+
+31. And now it's time to start the development

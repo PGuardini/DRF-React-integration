@@ -2,10 +2,19 @@
 <html>
   <head>
     <title>Getting Started with Django and Vite</title>
+    <script type="module">
+      import RefreshRuntime from 'http://localhost:5173/static/@react-refresh'
+      RefreshRuntime.injectIntoGlobalHook(window)
+      window.$RefreshReg$ = () => {}
+      window.$RefreshSig$ = () => (type) => type
+      window.__vite_plugin_react_preamble_installed__ = true
+    </script>
     {% vite_hmr_client %}
   </head>
   <body>
-    <script src="{% static 'js/index-bundle.js' %}"></script>
+    <div id="root"></div>    
     
+    {% vite_asset 'assets/js/index.jsx' %}
+
   </body>
 </html>
