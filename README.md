@@ -18,5 +18,5 @@ Setting up this repository from 0 to DRF-React app:
 ```bash
 
     npm init -y
-    npm -D vite
+    npm install -D vite
 ```
