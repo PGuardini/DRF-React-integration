@@ -105,3 +105,50 @@ and create (or add) a plugins section, adding react() into that:
         // rest of our vite config
     });
 ```
+
+11. Now we can start to use jsx files in our development enviroment
+12. Now we will actually add react in our project:
+
+```bash
+
+    npm install react react-dom
+
+```
+
+13. The vite js pipeline is finally setted, we can bundle our jsx files into js, for our production code.
+14. Now we need to connect django to vite hot module replacement (HMR), which is nothing more than an auto refresh
+15. To add to django we run the follow command:
+```bash
+    uv add django-vite
+```
+
+And add to our installed_apps in settings.py:
+
+```py
+
+INSTALLED_APPS = [
+    # other apps...,
+    "django_vite",
+]
+
+```
+
+Still in our settings.py, we must add the follow constants, that will allow django load our static files:
+
+```py
+    STATIC_ROOT = BASE_DIR / "static_root"
+    STATIC_URL = "static/"
+
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static',
+    ]
+
+    DJANGO_VITE = {
+            "default": {
+            "dev_mode": DEBUG,
+            'manifest_path': 'static/manifest.json',
+        }
+    }   
+```
+
+16. Perfect, we have our all enviroment setted and we can now start to develop our application
