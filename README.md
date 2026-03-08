@@ -152,3 +152,49 @@ Still in our settings.py, we must add the follow constants, that will allow djan
 ```
 
 16. Perfect, we have our all enviroment setted and we can now start to develop our application
+17. We gonna write our first Hello, World! with react in our django project
+18. In our template index.html, we'll add this code:
+```html
+
+<!-- to load the django_vite app -->
+{% load django_vite %}
+<html>
+  <head>
+    <title>Getting Started with Django and Vite</title>
+    <!-- to load the vite HMR, that will refresh our page for each change in our javascript -->
+    {% vite_hmr_client %}
+  </head>
+  <body>
+  </body>
+</html>
+
+```
+
+19. Creating our view and adding the route into our urls.py:
+
+```py
+# views.py
+
+from django.shortcuts import render
+
+# Create your views here.
+def index(request):
+    return render(request, 'todo/index.html')
+
+```
+
+and:
+
+```py
+from django.contrib import admin
+from django.urls import path
+
+from setup.views import index
+
+urlpatterns = [
+    path('', index, name='index')
+]
+
+```
+
+20. Using the django routing, we can map and add our app ease
