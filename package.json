@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/PGuardini/DRF-React-integration#readme",
   "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.4",
     "vite": "^7.3.1"
   }
 }
