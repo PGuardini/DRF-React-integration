@@ -13,7 +13,7 @@ Setting up this repository from 0 to DRF-React app:
     uv run manage.py startapp todo_app
 ```
 
-2. Setted up the django structure, now we need to create a vite server for serve our development purposes:
+2. Set up the django structure, now we need to create a vite server for serve our development purposes:
 
 ```bash
 
@@ -116,7 +116,7 @@ and create (or add) a plugins section, adding react() into that:
 
 ```
 
-13. The vite js pipeline is finally setted, we can bundle our jsx files into js, for our production code.
+13. The vite js pipeline is finally set, we can bundle our jsx files into js, for our production code.
 14. Now we need to connect django to vite hot module replacement (HMR), which is nothing more than an auto refresh
 15. To add to django we run the follow command:
 ```bash
@@ -152,7 +152,7 @@ Still in our settings.py, we must add the follow constants, that will allow djan
     }   
 ```
 
-16. Perfect, we have our all enviroment setted and we can now start to develop our application
+16. Perfect, we have our all enviroment set and we can now start to develop our application
 17. We gonna write our first Hello, World! with react in our django project
 18. In our template index.html, we'll add this code:
 ```html
